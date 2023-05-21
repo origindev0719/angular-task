@@ -1,0 +1,23 @@
+<div class="shadow-lg p-2 mb-3 d-flex justify-content-between header">
+  <div class="d-flex align-items-center">
+    <h1 class="fs-3 p-1 rounded mb-0 header-logo">TRAVEL</h1>
+  </div>
+  <div class="d-flex align-items-center">
+    <span
+      class="header-menu p-3"
+      (click)="setActiveButton('list')"
+      [ngClass]="{ active: active === 'list' }"
+      [routerLink]="['/list']"
+    >
+      List
+    </span>
+    <span
+      class="header-menu p-3"
+      (click)="setActiveButton('new')"
+      [ngClass]="{ active: active === 'new' }"
+      [routerLink]="['']"
+    >
+      New
+    </span>
+  </div>
+</div>

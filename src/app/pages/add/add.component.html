@@ -1,0 +1,105 @@
+<div class="col-12 d-flex justify-content-center p-3" [formGroup]="form">
+  <div class="col-md-8 col-sm-10 col-lg-6 col-xs-12 form-container">
+    <div class="row">
+      <div class="col-sm-6 col-xs-12 mb-4">
+        <label for="travleName" class="form-label">Travel Name</label>
+        <input
+          class="form-control"
+          type="text"
+          id="travleName"
+          [formControlName]="'name'"
+        />
+        <div
+          *ngIf="form.get('name')?.invalid && form.get('name')?.touched"
+          class="text-danger"
+        >
+          Please enter your name.
+        </div>
+      </div>
+      <div class="col-sm-6 col-xs-12 mb-4">
+        <label for="travleEmail" class="form-label">Travel Email</label>
+        <input
+          class="form-control"
+          type="email"
+          id="travleEmail"
+          formControlName="email"
+        />
+        <div
+          *ngIf="form.get('email')?.errors?.['required'] && form.get('email')?.touched"
+          class="text-danger"
+        >
+          Please enter your Email.
+        </div>
+        <div
+          *ngIf="form.get('email')?.errors?.['email'] && form.get('email')?.touched"
+          class="text-danger"
+        >
+          Invalid email format.
+        </div>
+      </div>
+      <div class="col-sm-6 col-xs-12 mb-4">
+        <label for="inputChannel" class="form-label">Channel</label>
+        <select id="inputChannel" class="form-select" formControlName="channel">
+          <option selected>Partner</option>
+          <option selected>Agent</option>
+          <option selected>Direct Customer</option>
+        </select>
+      </div>
+      <div class="col-sm-6 col-xs-12 mb-4">
+        <label for="inputPrice" class="form-label">Booking Price</label>
+        <input
+          class="form-control"
+          type="number"
+          id="inputPrice"
+          formControlName="price"
+        />
+        <div
+          *ngIf="form.get('price')?.errors?.['min'] && form.get('price')?.touched"
+          class="text-danger"
+        >
+          Price should be bigger than 0.
+        </div>
+      </div>
+      <div class="col-sm-6 col-xs-12 mb-4">
+        <label for="inputDate" class="form-label">Date</label>
+        <div class="input-group">
+          <input
+            class="form-control"
+            placeholder="yyyy-mm-dd"
+            name="dp"
+            id="inputPrice"
+            ngbDatepicker
+            #d="ngbDatepicker"
+            [placement]="placement"
+            formControlName="date"
+            required
+          />
+          <button
+            class="btn btn-outline-secondary bi bi-calendar3"
+            (click)="d.toggle()"
+            type="button"
+          ></button>
+        </div>
+        <div
+          *ngIf="form.get('date')?.value.year == 0 && form.get('date')?.touched"
+          class="text-danger"
+        >
+          Date is required.
+        </div>
+      </div>
+      <div class="col-sm-6 col-xs-12 mb-4">
+        <label for="inputChannel" class="form-label">Time</label>
+        <ngb-timepicker [formControlName]="'time'"></ngb-timepicker>
+      </div>
+      <div class="col-12">
+        <button
+          (click)="save()"
+          type="submit"
+          class="btn btn-success card cursor-pointer"
+        >
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

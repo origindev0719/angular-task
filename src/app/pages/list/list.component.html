@@ -1,0 +1,47 @@
+<div class="table-responsive-md mb-5">
+  <div class="mx-auto col-xs-12 col-sm-8 col-md-10 col-lg-10 p-3">
+    <div class="text-right py-3 d-flex justify-content-end">
+      <table class="table table-responsive table-primary w-25">
+        <tbody>
+          <tr>
+            <td class="fw-bold">Average:</td>
+            <td>{{ avgPrice }}</td>
+            <td class="fw-bold">Total Number:</td>
+            <td>{{ totalCount }}</td>
+          </tr>
+          <tr>
+            <td class="fw-bold">Max:</td>
+            <td>{{ maxPrice }}</td>
+            <td class="fw-bold">Min:</td>
+            <td>{{ minPrice }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="spinner text-center" *ngIf="isLoading">
+      <div class="spinner-grow text-success" role="status"></div>
+      <div class="spinner-grow text-danger" role="status"></div>
+      <div class="spinner-grow text-warning" role="status"></div>
+    </div>
+    <table
+      class="table table-light table-striped table-hover align-middle mb-5 p-5"
+    >
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Vehicle Type</th>
+          <th scope="col">Price per Passenger</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of lists; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ data.name }}</td>
+          <td>{{ data.vehicleType.name }}</td>
+          <td>{{ data.pricePerPassenger }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
